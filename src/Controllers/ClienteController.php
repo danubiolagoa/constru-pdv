@@ -11,17 +11,19 @@ class ClienteController
     {
         $busca = $_GET['busca'] ?? '';
 
-        $sql = 'SELECT * FROM clientes';
+        $sql = "SELECT c.*, COALESCE(SUM(v.total), 0) as total_compras
+                FROM clientes c
+                LEFT JOIN vendas v ON v.cliente_id = c.id AND v.status = 'concluida'";
         $params = [];
 
         if ($busca) {
-            $sql .= ' WHERE nome ILIKE ? OR cpf_cnpj ILIKE ? OR telefone ILIKE ?';
+            $sql .= ' WHERE c.nome ILIKE ? OR c.cpf_cnpj ILIKE ? OR c.telefone ILIKE ?';
             $params[] = "%{$busca}%";
             $params[] = "%{$busca}%";
             $params[] = "%{$busca}%";
         }
 
-        $sql .= ' ORDER BY nome';
+        $sql .= ' GROUP BY c.id ORDER BY c.nome';
 
         $clientes = Database::fetchAll($sql, $params);
 

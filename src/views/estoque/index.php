@@ -64,21 +64,21 @@
         </form>
     </div>
 
-    <div class="card overflow-x-auto">
-        <table class="table-base w-full">
-            <thead>
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-200">
                 <tr>
-                    <th class="min-w-[200px]">Produto</th>
-                    <th class="text-right whitespace-nowrap">Estoque Atual</th>
-                    <th class="text-right whitespace-nowrap hidden md:table-cell">Estoque Minimo</th>
-                    <th class="whitespace-nowrap">Status</th>
-                    <th class="whitespace-nowrap">Acoes</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produto</th>
+                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Estoque Atual</th>
+                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Estoque Minimo</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acoes</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="divide-y divide-gray-200">
                 <?php if (empty($produtos)): ?>
                     <tr>
-                        <td colspan="5" class="text-center text-gray-500 py-8">Nenhum produto encontrado.</td>
+                        <td colspan="5" class="px-6 py-8 text-center text-gray-500">Nenhum produto encontrado.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($produtos as $produto): ?>
@@ -86,28 +86,30 @@
                             $estoqueAtual = (float)$produto['estoque_atual'];
                             $estoqueMinimo = (float)$produto['estoque_minimo'];
                             $ratio = $estoqueMinimo > 0 ? $estoqueAtual / $estoqueMinimo : 999;
-                            $statusClass = $ratio <= 1 ? 'badge-danger' : ($ratio <= 1.5 ? 'badge-warning' : 'badge-success');
-                            $statusText = $ratio <= 1 ? 'Critico' : ($ratio <= 1.5 ? 'Baixo' : 'Normal');
+                            $statusClass = $ratio <= 1 ? 'Critico' : ($ratio <= 1.5 ? 'Baixo' : 'Normal');
+                            $statusTag = $ratio <= 1 ? 'bg-red-100 text-red-800' : ($ratio <= 1.5 ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800');
                         ?>
-                        <tr class="<?= $ratio <= 1 ? 'bg-danger/5' : '' ?>">
-                            <td>
+                        <tr class="hover:bg-gray-50 <?= $ratio <= 1 ? 'bg-red-50' : '' ?>">
+                            <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 rounded-full flex-shrink-0 <?= $statusClass === 'badge-danger' ? 'bg-red-600' : ($statusClass === 'badge-warning' ? 'bg-yellow-500' : 'bg-green-500') ?>"></div>
-                                    <span class="font-medium text-gray-800 truncate"><?= e($produto['nome']) ?></span>
+                                    <div class="w-2 h-2 rounded-full flex-shrink-0 <?= $ratio <= 1 ? 'bg-red-600' : ($ratio <= 1.5 ? 'bg-yellow-500' : 'bg-green-500') ?>"></div>
+                                    <span class="text-sm font-medium text-gray-900 truncate"><?= e($produto['nome']) ?></span>
                                 </div>
                             </td>
-                            <td class="text-right font-semibold whitespace-nowrap <?= $ratio <= 1 ? 'text-danger' : ($ratio <= 1.5 ? 'text-warning' : 'text-gray-800') ?>">
-                                <?= e((string)$produto['estoque_atual']) ?>
+                            <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap <?= $ratio <= 1 ? 'text-red-700' : ($ratio <= 1.5 ? 'text-yellow-700' : 'text-gray-900') ?>">
+                                <?= number_format($produto['estoque_atual'], 2, ',', '.') ?>
                             </td>
-                            <td class="text-right text-gray-500 whitespace-nowrap hidden md:table-cell"><?= e((string)$produto['estoque_minimo']) ?></td>
-                            <td><span class="<?= $statusClass ?>"><?= $statusText ?></span></td>
-                            <td>
-                                <div class="flex gap-2 whitespace-nowrap">
-                                    <button type="button" class="btn-primary btn-sm" data-movimentacao="entrada" data-produto-id="<?= e((string)$produto['id']) ?>" data-produto-nome="<?= e($produto['nome']) ?>">
-                                        <i data-lucide="plus" class="w-3.5 h-3.5 mr-1"></i>Entrada
+                            <td class="px-6 py-4 text-sm text-gray-500 text-right whitespace-nowrap hidden md:table-cell"><?= number_format($produto['estoque_minimo'], 2, ',', '.') ?></td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-1 text-xs font-medium rounded-full <?= $statusTag ?>"><?= $statusText ?></span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <button type="button" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-md bg-primary text-white hover:bg-primary/90 transition" data-movimentacao="entrada" data-produto-id="<?= e((string)$produto['id']) ?>" data-produto-nome="<?= e($produto['nome']) ?>">
+                                        <i data-lucide="plus" class="w-3 h-3 mr-1"></i>Entrada
                                     </button>
-                                    <button type="button" class="btn-danger btn-sm" data-movimentacao="saida" data-produto-id="<?= e((string)$produto['id']) ?>" data-produto-nome="<?= e($produto['nome']) ?>">
-                                        <i data-lucide="minus" class="w-3.5 h-3.5 mr-1"></i>Saida
+                                    <button type="button" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-md bg-red-600 text-white hover:bg-red-700 transition" data-movimentacao="saida" data-produto-id="<?= e((string)$produto['id']) ?>" data-produto-nome="<?= e($produto['nome']) ?>">
+                                        <i data-lucide="minus" class="w-3 h-3 mr-1"></i>Saida
                                     </button>
                                 </div>
                             </td>

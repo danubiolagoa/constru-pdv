@@ -1,0 +1,14 @@
+/vendor/
+/node_modules/
+/public/css/output.css
+.env
+storage/logs/*.log
+storage/uploads/*
+!storage/uploads/.gitkeep
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace

@@ -1,0 +1,102 @@
+- generic [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - img [ref=e5]
+      - generic [ref=e10]: Constru-PDV
+    - navigation [ref=e11]:
+      - link "Dashboard" [ref=e12] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e13]
+        - generic [ref=e18]: Dashboard
+      - link "Produtos" [ref=e19] [cursor=pointer]:
+        - /url: /produtos
+        - img [ref=e20]
+        - generic [ref=e24]: Produtos
+      - link "Estoque" [ref=e25] [cursor=pointer]:
+        - /url: /estoque
+        - img [ref=e26]
+        - generic [ref=e29]: Estoque
+      - link "Vendas" [ref=e30] [cursor=pointer]:
+        - /url: /vendas
+        - img [ref=e31]
+        - generic [ref=e35]: Vendas
+      - link "Clientes" [ref=e36] [cursor=pointer]:
+        - /url: /clientes
+        - img [ref=e37]
+        - generic [ref=e42]: Clientes
+      - link "Usuarios" [ref=e43] [cursor=pointer]:
+        - /url: /usuarios
+        - img [ref=e44]
+        - generic [ref=e56]: Usuarios
+      - link "Relatorios" [ref=e57] [cursor=pointer]:
+        - /url: /relatorios
+        - img [ref=e58]
+        - generic [ref=e60]: Relatorios
+      - link "Configuracoes" [ref=e61] [cursor=pointer]:
+        - /url: /configuracoes
+        - img [ref=e62]
+        - generic [ref=e65]: Configuracoes
+  - banner [ref=e66]:
+    - generic [ref=e67]:
+      - button [ref=e68] [cursor=pointer]:
+        - img [ref=e69]
+      - heading "Novo Produto" [level=1] [ref=e70]
+    - generic [ref=e72]:
+      - generic [ref=e73]: A
+      - generic [ref=e74]:
+        - paragraph [ref=e75]: Administrador
+        - paragraph [ref=e76]: Administrador
+      - button "Sair" [ref=e78] [cursor=pointer]:
+        - img [ref=e79]
+  - main [ref=e82]:
+    - generic [ref=e84]:
+      - heading "Novo Produto" [level=1] [ref=e86]
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: Nome do Produto
+            - textbox [ref=e92]: Cimento Votoran 50kg
+          - generic [ref=e93]:
+            - generic [ref=e94]: Descrição
+            - textbox [ref=e95]: Cimento Portland composto CP II
+          - generic [ref=e96]:
+            - generic [ref=e97]: Categoria
+            - combobox [ref=e98]:
+              - option "Selecione..."
+              - option "Acabamento"
+              - option "Ceramica"
+              - option "Construcao" [selected]
+              - option "Eletrica"
+              - option "Ferramentas"
+              - option "Hidraulica"
+              - option "Metais"
+              - option "Tintas"
+          - generic [ref=e99]:
+            - generic [ref=e100]: SKU
+            - textbox [ref=e101]: CIM-001
+          - generic [ref=e102]:
+            - generic [ref=e103]: Preço de Venda
+            - textbox "0,00" [ref=e104]: 35,90
+          - generic [ref=e105]:
+            - generic [ref=e106]: Unidade de Medida
+            - combobox [ref=e107]:
+              - option "Unidade (un)" [selected]
+              - option "Quilograma (kg)"
+              - option "Metro Quadrado (m²)"
+              - option "Metro Cúbico (m³)"
+          - generic [ref=e108]:
+            - generic [ref=e109]: Estoque Atual
+            - spinbutton [ref=e110]: "0"
+          - generic [ref=e111]:
+            - generic [ref=e112]: Estoque Mínimo
+            - spinbutton [ref=e113]: "0"
+          - generic [ref=e114]:
+            - generic [ref=e115]: Código de Barras
+            - textbox [active] [ref=e116]: "7891234567890"
+          - generic [ref=e117]:
+            - generic [ref=e118]: Foto do Produto
+            - button "Choose File" [ref=e119]
+        - generic [ref=e120]:
+          - link "Cancelar" [ref=e121] [cursor=pointer]:
+            - /url: /produtos
+          - button "Salvar" [ref=e122] [cursor=pointer]

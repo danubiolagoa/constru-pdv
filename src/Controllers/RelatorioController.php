@@ -61,7 +61,7 @@ class RelatorioController
         );
 
         $estoqueAtual = Database::fetchAll(
-            "SELECT nome, estoque, preco_venda
+            "SELECT nome, estoque_atual, preco_venda
              FROM produtos
              ORDER BY nome"
         );

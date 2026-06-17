@@ -68,7 +68,7 @@
                     <?php foreach ($estoqueAtual ?? [] as $item): ?>
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 font-medium"><?= e($item['nome'] ?? '-') ?></td>
-                        <td class="px-6 py-4 text-right"><?= e($item['estoque'] ?? 0) ?></td>
+                        <td class="px-6 py-4 text-right"><?= e($item['estoque_atual'] ?? 0) ?></td>
                         <td class="px-6 py-4 text-right">
                             R$ <?= e(number_format((float) ($item['preco_venda'] ?? 0), 2, ',', '.')) ?>
                         </td>

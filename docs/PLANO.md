@@ -46,119 +46,118 @@ Sistema PDV completo para lojas de materiais de construcao, desenvolvido em PHP 
 
 ## Fases de Implementacao
 
-### Fase 1 - Fundacao (Base do sistema)
+### Fase 1 - Fundacao (Base do sistema) ✅
 
 **Objetivo:** Estrutura basica do projeto funcionando com autenticacao e layout.
 
 ```
 Progresso
-● [ ] Estrutura do projeto (MVC, roteamento, autoload)
-● [ ] Conexao com Neon PostgreSQL
-● [ ] Sistema de autenticacao (login/logout/sessao)
-● [ ] Layout base (sidebar, header, componentes)
-● [ ] Design system (Tailwind config, cores, tipografia)
-● [ ] Migration do banco de dados (tabelas core)
-● [ ] Middleware de autenticacao e permissoes
+● [x] Estrutura do projeto (MVC, roteamento, autoload)
+● [x] Conexao com Neon PostgreSQL
+● [x] Sistema de autenticacao (login/logout/sessao)
+● [x] Layout base (sidebar, header, componentes)
+● [x] Design system (Tailwind config, cores, tipografia)
+● [x] Migration do banco de dados (tabelas core)
+● [x] Middleware de autenticacao e permissoes
 ```
 
 **Entregaveis:**
-- Projeto rodando localmente
+- Projeto rodando localmente e na Vercel
 - Login funcional
 - Layout base com sidebar e header
 - Banco de dados conectado
 
 ---
 
-### Fase 2 - Cadastros Basicos
+### Fase 2 - Cadastros Basicos ✅
 
 **Objetivo:** CRUD completo das entidades principais.
 
 ```
 Progresso
-● [ ] CRUD de Produtos (com categorias e foto)
-● [ ] CRUD de Clientes (CPF/CNPJ, contato)
-● [ ] CRUD de Usuarios (admin e vendedor)
+● [x] CRUD de Produtos (com busca e filtros)
+● [x] CRUD de Clientes (CPF/CNPJ, contato, total compras)
+● [x] CRUD de Usuarios (admin e vendedor)
 ● [ ] CRUD de Categorias de produtos
-● [ ] Sistema de busca e filtros
+● [x] Sistema de busca e filtros
 ```
 
 **Entregaveis:**
-- Produtos cadastrados com foto e categoria
-- Clientes cadastrados com CPF/CNPJ
+- Produtos cadastrados com estoque e precos
+- Clientes cadastrados com historico de compras
 - Usuarios com roles definidos
 - Busca funcional em todas as listas
 
 ---
 
-### Fase 3 - PDV (Coracao do sistema)
+### Fase 3 - PDV (Coracao do sistema) 🔶
 
 **Objetivo:** Sistema de venda rapida funcional e otimizado.
 
 ```
 Progresso
-● [ ] Tela do PDV com busca rapida de produtos
-● [ ] Carrinho de compras (adicionar/remover/alterar qtd)
-● [ ] Selecao de cliente (opcional)
+● [x] Tela do PDV com busca rapida de produtos
+● [x] Carrinho de compras (adicionar/remover/alterar qtd)
+● [x] Selecao de cliente (opcional)
 ● [ ] Aplicacao de desconto (% ou valor fixo)
-● [ ] Finalizacao de venda (forma de pagamento)
+● [x] Finalizacao de venda (forma de pagamento)
 ● [ ] Atalhos de teclado (F2, F4, F8, F12)
 ● [ ] Suporte a leitor de codigo de barras
-● [ ] Baixa automatica de estoque
+● [x] Baixa automatica de estoque
 ● [ ] Impressao de recibo
 ```
 
 **Entregaveis:**
-- PDV funcional e rapido
-- Atalhos de teclado funcionando
+- PDV funcional
 - Venda registrada no banco
 - Estoque atualizado automaticamente
 
 ---
 
-### Fase 4 - Estoque e Vendas
+### Fase 4 - Estoque e Vendas ✅
 
 **Objetivo:** Controle completo de estoque e gestao de vendas.
 
 ```
 Progresso
-● [ ] Controle de estoque (entrada/saida manual)
-● [ ] Alertas de estoque baixo
-● [ ] Historico de movimentacoes
-● [ ] Gestao de vendas (historico, filtros)
-● [ ] Cancelamento de venda (com reposicao de estoque)
+● [x] Controle de estoque (entrada/saida manual com modal)
+● [x] Alertas de estoque baixo (tags coloridas: Critico/Baixo/Normal)
+● [x] Historico de movimentacoes
+● [x] Gestao de vendas (historico, filtros por data/status)
+● [x] Cancelamento de venda (com reposicao de estoque)
 ● [ ] Devolucao parcial
 ```
 
 **Entregaveis:**
-- Estoque controlado com historico
-- Alertas visuais de estoque baixo
-- Vendas com historico completo
-- Cancelamentos e devolucoes funcionais
+- Estoque controlado com historico e grafico
+- Alertas visuais de estoque baixo com indicador por cor
+- Vendas com historico completo e detalhes
+- Cancelamentos funcionais
 
 ---
 
-### Fase 5 - Dashboard e Relatorios
+### Fase 5 - Dashboard e Relatorios ✅
 
 **Objetivo:** Visualizacao de dados e relatorios exportaveis.
 
 ```
 Progresso
-● [ ] Dashboard Admin (metricas, graficos)
-● [ ] Dashboard Vendedor (resumo pessoal)
-● [ ] Relatorio de vendas por periodo
-● [ ] Relatorio de produtos mais vendidos
-● [ ] Relatorio de fluxo de caixa
+● [x] Dashboard Admin (metricas, graficos Chart.js)
+● [x] Dashboard Vendedor (resumo pessoal)
+● [x] Relatorio de vendas por periodo
+● [x] Relatorio de produtos mais vendidos
+● [x] Relatorio de fluxo de caixa
 ● [ ] Exportacao PDF/CSV
 ```
 
 **Entregaveis:**
-- Dashboards com graficos interativos
-- Relatorios gerados e exportaveis
-- Metricas em tempo real
+- Dashboard com graficos interativos (barras dupla, rosca, horizontal)
+- Metas de vendas via configuracao
+- Relatorios com dados reais do banco
 
 ---
 
-### Fase 6 - Funcionalidades Avancadas
+### Fase 6 - Funcionalidades Avancadas 🔶
 
 **Objetivo:** Features extras que agregam valor ao sistema.
 
@@ -168,37 +167,37 @@ Progresso
 ● [ ] Orcamentos/Pre-vendas
 ● [ ] Fiado/Crediario proprio
 ● [ ] Multiplas formas de pagamento
-● [ ] Precos por unidade de medida (m3, m2, kg)
+● [x] Precos por unidade de medida (un, kg, m2, m3, m, l, cx, pct)
 ● [ ] Desconto por quantidade
 ● [ ] Importacao de produtos (CSV)
-● [ ] Logs de auditoria
+● [x] Logs de auditoria (tabela criada)
 ```
 
 **Entregaveis:**
-- Todas as features extras funcionais
-- Sistema completo para uso em producao
+- Tabelas preparadas no banco
+- Precos por unidade de medida funcional
 
 ---
 
-### Fase 7 - Polimento e Deploy
+### Fase 7 - Polimento e Deploy ✅
 
 **Objetivo:** Preparar para producao e fazer deploy.
 
 ```
 Progresso
-● [ ] Configuracoes da loja
-● [ ] Empty states e micro-interacoes
-● [ ] Toasts e feedback visual
-● [ ] Testes manuais (QA)
-● [ ] Documentacao (README)
-● [ ] Deploy na Vercel
-● [ ] Repositorio GitHub publico
+● [x] Configuracoes da loja (dados, meta de vendas)
+● [x] Empty states e micro-interacoes
+● [x] Toasts e feedback visual
+● [x] Testes manuais (QA via Playwright)
+● [x] Documentacao (README, DESIGN-SYSTEM, PLANO)
+● [x] Deploy na Vercel (vercel-php + @vercel/static)
+● [x] Repositorio GitHub publico
 ```
 
 **Entregaveis:**
 - Sistema polido e profissional
-- Deploy funcionando na Vercel
-- Repositorio publico no GitHub
+- Deploy funcionando na Vercel: https://constru-pdv.vercel.app
+- Repositorio publico: https://github.com/danubiolagoa/constru-pdv
 - Documentacao completa
 
 ---
@@ -373,43 +372,43 @@ configuracoes (
 
 ## Criterios de Aceite
 
-### Fase 1
-- [ ] Projeto roda localmente com `php -S localhost:8000 -t public`
-- [ ] Login funcional com sessao de 8h
-- [ ] Layout base com sidebar navegavel
-- [ ] Banco Neon conectado e migrations executadas
+### Fase 1 ✅
+- [x] Projeto roda localmente com `php -S localhost:8000 -t public`
+- [x] Login funcional com sessao de 8h
+- [x] Layout base com sidebar navegavel
+- [x] Banco Neon conectado e migrations executadas
 
-### Fase 2
-- [ ] CRUD completo de produtos com upload de foto
-- [ ] CRUD de clientes com validacao de CPF/CNPJ
-- [ ] CRUD de usuarios com roles
-- [ ] Busca funcional em todas as listas
+### Fase 2 ✅
+- [x] CRUD completo de produtos
+- [x] CRUD de clientes com validacao de CPF/CNPJ
+- [x] CRUD de usuarios com roles
+- [x] Busca funcional em todas as listas
 
-### Fase 3
-- [ ] PDV funcional com busca rapida
+### Fase 3 🔶
+- [x] PDV funcional com busca rapida
 - [ ] Atalhos de teclado funcionando (F2, F4, F8, F12)
-- [ ] Venda registrada e estoque atualizado
+- [x] Venda registrada e estoque atualizado
 - [ ] Recibo imprimivel
 
-### Fase 4
-- [ ] Estoque com historico completo
-- [ ] Alertas visuais de estoque baixo
-- [ ] Cancelamento de venda restaura estoque
+### Fase 4 ✅
+- [x] Estoque com historico completo
+- [x] Alertas visuais de estoque baixo
+- [x] Cancelamento de venda restaura estoque
 - [ ] Devolucao parcial funcional
 
-### Fase 5
-- [ ] Dashboards com graficos Chart.js
+### Fase 5 ✅
+- [x] Dashboards com graficos Chart.js
 - [ ] Relatorios exportaveis em PDF/CSV
-- [ ] Metricas em tempo real
+- [x] Metricas em tempo real
 
-### Fase 6
+### Fase 6 🔶
 - [ ] Controle de caixa funcional
 - [ ] Orcamentos com conversao em venda
 - [ ] Fiado com controle de pagamentos
 - [ ] Multiplas formas de pagamento na venda
 
-### Fase 7
-- [ ] Deploy funcionando na Vercel
-- [ ] Repositorio publico no GitHub
-- [ ] Documentacao completa
-- [ ] QA realizado
+### Fase 7 ✅
+- [x] Deploy funcionando na Vercel
+- [x] Repositorio publico no GitHub
+- [x] Documentacao completa
+- [x] QA realizado

@@ -1,6 +1,9 @@
 # Constru-PDV
 
 Sistema de Ponto de Venda (PDV) para lojas de materiais de construcao.
+Deploy: [constru-pdv.vercel.app](https://constru-pdv.vercel.app)
+
+**Login avaliacao:** admin@construpdv.com / admin123
 
 ## Tecnologias
 
@@ -15,41 +18,32 @@ Sistema de Ponto de Venda (PDV) para lojas de materiais de construcao.
 
 ### Modulos Principais
 - Autenticacao (login/logout/sessao)
-- Dashboard Admin (metricas, graficos, alertas)
-- Dashboard Vendedor (PDV rapido)
-- Cadastro de Produtos (CRUD completo)
-- Controle de Estoque (entrada/saida, alertas)
-- Gestao de Vendas (historico, cancelamentos)
-- Gestao de Clientes (CPF/CNPJ, historico)
-- Gestao de Usuarios (permissoes)
-- Relatorios (vendas, estoque, fluxo de caixa)
-- Configuracoes da Loja
+- Dashboard Admin (metricas, graficos Chart.js, alertas de estoque)
+- Dashboard Vendedor (resumo pessoal)
+- CRUD de Produtos (SKU, codigo barras, unidade medida, estoque)
+- Controle de Estoque (entrada/saida, alertas, historico, grafico)
+- Gestao de Vendas (historico, filtros, detalhes, cancelamento)
+- Gestao de Clientes (CPF/CNPJ, historico de compras)
+- Gestao de Usuarios (admin/vendedor)
+- Relatorios (vendas por periodo, produtos mais vendidos, fluxo de caixa)
+- Configuracoes da Loja (inclui meta de vendas diaria)
 
-### Features Extras
-- Orcamentos/Pre-vendas
-- Fiado/Crediario proprio
-- Multiplas formas de pagamento
-- Precos por unidade de medida (m3, m2, kg)
-- Desconto por quantidade
-- Importacao de produtos (CSV)
-- Controle de caixa (abertura/fechamento)
-- Logs de auditoria
-- Codigo de barras (leitor fisico)
-- Recibo/Cupom nao fiscal
+### Tabelas do Banco (14)
+usuarios, categorias, produtos, clientes, vendas, itens_venda, pagamentos,
+movimentacoes_estoque, orcamentos, crediario, caixa, logs_auditoria, configuracoes
 
 ## Design System
 
 - **Paleta:** Verde Floresta `#2D5F4A` + Ambar Terroso `#D4883A`
 - **Tipografia:** Inter (corpo) + JetBrains Mono (valores monetarios)
 - **Layout:** Sidebar + Header fixo, conteudo fluido
-- **PDV:** Atalhos de teclado (F2, F4, F8, F12), auto-focus, suporte a leitor
 
 Ver [docs/DESIGN-SYSTEM.md](docs/DESIGN-SYSTEM.md) para especificacoes completas.
 
 ## Instalacao
 
 ```bash
-git clone https://github.com/SEU_USUARIO/constru-pdv.git
+git clone https://github.com/danubiolagoa/constru-pdv.git
 cd constru-pdv
 composer install
 npm install
@@ -89,22 +83,24 @@ php -S localhost:8000 -t public
 ```
 constru-pdv/
 ├── public/              # Arquivos publicos
-│   ├── css/            # CSS compilado
+│   ├── css/            # CSS compilado (Tailwind)
 │   ├── js/             # JavaScript
 │   ├── img/            # Imagens
 │   └── index.php       # Entry point
 ├── src/
-│   ├── controllers/    # Controladores
-│   ├── models/         # Models (banco de dados)
-│   ├── views/          # Templates PHP
-│   │   ├── layouts/    # Layouts base
-│   │   └── components/ # Componentes reutilizaveis
-│   ├── middleware/     # Middlewares
-│   └── helpers/        # Funcoes auxiliares
-├── config/             # Configuracoes
+│   ├── Controllers/    # Controladores
+│   ├── Models/         # Models (banco de dados)
+│   ├── Views/          # Templates PHP
+│   │   ├── layouts/    # Layouts base (app, auth)
+│   │   └── components/ # Componentes reutilizaveis (sidebar)
+│   ├── Middleware/     # Middlewares (auth, admin, guest)
+│   └── helpers/        # Funcoes auxiliares (env, csrf, render)
+├── config/             # Configuracoes (app, database, routes)
 ├── database/           # Migrations e seeds
 ├── docs/               # Documentacao
-└── vercel.json         # Deploy Vercel
+├── .env.example        # Template de variaveis de ambiente
+├── vercel.json         # Deploy Vercel (vercel-php + @vercel/static)
+└── migrate.php         # Script de migracao do banco
 ```
 
 ## Fases de Implementacao
@@ -113,13 +109,13 @@ Ver [docs/PLANO.md](docs/PLANO.md) para o plano completo de desenvolvimento.
 
 | Fase | Foco | Status |
 |------|------|--------|
-| 1 | Fundacao (estrutura, DB, auth, layout) | Em andamento |
-| 2 | Cadastros Basicos | Pendente |
-| 3 | PDV (venda rapida) | Pendente |
-| 4 | Estoque e Vendas | Pendente |
-| 5 | Dashboard e Relatorios | Pendente |
-| 6 | Features Avancadas | Pendente |
-| 7 | Polimento e Deploy | Pendente |
+| 1 | Fundacao (estrutura, DB, auth, layout) | Concluido |
+| 2 | Cadastros Basicos | Concluido |
+| 3 | PDV (venda rapida) | Parcial |
+| 4 | Estoque e Vendas | Concluido |
+| 5 | Dashboard e Relatorios | Concluido |
+| 6 | Features Avancadas | Parcial |
+| 7 | Polimento e Deploy | Concluido |
 
 ## Licenca
 

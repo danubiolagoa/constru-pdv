@@ -33,7 +33,7 @@
             <tbody class="divide-y divide-gray-200">
                 <?php foreach ($vendas ?? [] as $venda): ?>
                 <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 font-medium"><?= e($venda['codigo']) ?></td>
+                        <td class="px-6 py-4 font-medium"><?= e($venda['numero']) ?></td>
                     <td class="px-6 py-4 text-gray-600"><?= e($venda['cliente_nome'] ?? 'Consumidor') ?></td>
                     <td class="px-6 py-4 text-gray-600"><?= e(date('d/m/Y H:i', strtotime($venda['created_at']))) ?></td>
                     <td class="px-6 py-4 text-right font-medium"><?= e('R$ ' . number_format((float) $venda['total'], 2, ',', '.')) ?></td>

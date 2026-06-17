@@ -15,5 +15,7 @@ Thumbs.db
 .playwright-mcp/
 *.png
 test_mov.php
+login-result.yml
+*.yml
 
 .vercel

@@ -53,7 +53,7 @@
                 <?php foreach ($movimentacoes ?? [] as $mov): ?>
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 text-gray-600"><?= e(date('d/m/Y H:i', strtotime($mov['created_at']))) ?></td>
-                    <td class="px-6 py-4 font-medium"><?= e($mov['descricao'] ?? $mov['codigo'] ?? '-') ?></td>
+                    <td class="px-6 py-4 font-medium"><?= e($mov['descricao'] ?? $mov['numero'] ?? '-') ?></td>
                     <td class="px-6 py-4 text-right font-medium text-green-600">
                         + R$ <?= e(number_format((float) ($mov['total'] ?? 0), 2, ',', '.')) ?>
                     </td>

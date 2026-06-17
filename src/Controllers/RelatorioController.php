@@ -23,7 +23,7 @@ class RelatorioController
         $dataFim = $_GET['data_fim'] ?? date('Y-m-d');
 
         $vendas = Database::fetchAll(
-            "SELECT v.*, c.nome AS cliente_nome
+            "SELECT v.id, v.numero, v.cliente_id, v.total, v.status, v.created_at, c.nome AS cliente_nome
              FROM vendas v
              LEFT JOIN clientes c ON c.id = v.cliente_id
              WHERE v.created_at >= ? AND v.created_at <= ?
@@ -94,7 +94,7 @@ class RelatorioController
         );
 
         $movimentacoes = Database::fetchAll(
-            "SELECT v.id, v.codigo, v.total, v.created_at
+            "SELECT v.id, v.numero, v.total, v.created_at
              FROM vendas v
              WHERE v.created_at >= ? AND v.created_at <= ? AND v.status != 'cancelada'
              ORDER BY v.created_at DESC",

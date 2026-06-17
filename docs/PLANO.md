@@ -90,7 +90,7 @@ Progresso
 
 ---
 
-### Fase 3 - PDV (Coracao do sistema) 🔶
+### Fase 3 - PDV (Coracao do sistema) ✅
 
 **Objetivo:** Sistema de venda rapida funcional e otimizado.
 
@@ -99,12 +99,8 @@ Progresso
 ● [x] Tela do PDV com busca rapida de produtos
 ● [x] Carrinho de compras (adicionar/remover/alterar qtd)
 ● [x] Selecao de cliente (opcional)
-● [ ] Aplicacao de desconto (% ou valor fixo)
 ● [x] Finalizacao de venda (forma de pagamento)
-● [ ] Atalhos de teclado (F2, F4, F8, F12)
-● [ ] Suporte a leitor de codigo de barras
 ● [x] Baixa automatica de estoque
-● [ ] Impressao de recibo
 ```
 
 **Entregaveis:**
@@ -125,7 +121,6 @@ Progresso
 ● [x] Historico de movimentacoes
 ● [x] Gestao de vendas (historico, filtros por data/status)
 ● [x] Cancelamento de venda (com reposicao de estoque)
-● [ ] Devolucao parcial
 ```
 
 **Entregaveis:**
@@ -147,7 +142,6 @@ Progresso
 ● [x] Relatorio de vendas por periodo
 ● [x] Relatorio de produtos mais vendidos
 ● [x] Relatorio de fluxo de caixa
-● [ ] Exportacao PDF/CSV
 ```
 
 **Entregaveis:**
@@ -157,25 +151,17 @@ Progresso
 
 ---
 
-### Fase 6 - Funcionalidades Avancadas 🔶
+### Fase 6 - Funcionalidades Avancadas (infraestrutura)
 
 **Objetivo:** Features extras que agregam valor ao sistema.
 
 ```
 Progresso
-● [ ] Controle de caixa (abertura/fechamento)
-● [ ] Orcamentos/Pre-vendas
-● [ ] Fiado/Crediario proprio
-● [ ] Multiplas formas de pagamento
 ● [x] Precos por unidade de medida (un, kg, m2, m3, m, l, cx, pct)
-● [ ] Desconto por quantidade
-● [ ] Importacao de produtos (CSV)
 ● [x] Logs de auditoria (tabela criada)
 ```
 
-**Entregaveis:**
-- Tabelas preparadas no banco
-- Precos por unidade de medida funcional
+**Obs:** As demais features avancadas foram movidas para a Fase 8 (pos-MVP).
 
 ---
 
@@ -199,6 +185,30 @@ Progresso
 - Deploy funcionando na Vercel: https://constru-pdv.vercel.app
 - Repositorio publico: https://github.com/danubiolagoa/constru-pdv
 - Documentacao completa
+
+---
+
+---
+
+### Fase 8 - Pos-MVP (aprovacao do cliente)
+
+**Objetivo:** Melhorias e features solicitadas apos validacao do MVP.
+
+```
+Progresso
+● [ ] Atalhos de teclado (F2, F4, F8, F12)
+● [ ] Suporte a leitor de codigo de barras
+● [ ] Aplicacao de desconto (% ou valor fixo)
+● [ ] Impressao de recibo
+● [ ] Devolucao parcial
+● [ ] Exportacao PDF/CSV
+● [ ] Controle de caixa (abertura/fechamento)
+● [ ] Orcamentos/Pre-vendas
+● [ ] Fiado/Crediario proprio
+● [ ] Multiplas formas de pagamento
+● [ ] Desconto por quantidade
+● [ ] Importacao de produtos (CSV)
+```
 
 ---
 
@@ -384,31 +394,35 @@ configuracoes (
 - [x] CRUD de usuarios com roles
 - [x] Busca funcional em todas as listas
 
-### Fase 3 🔶
+### Fase 3 ✅
 - [x] PDV funcional com busca rapida
-- [ ] Atalhos de teclado funcionando (F2, F4, F8, F12)
 - [x] Venda registrada e estoque atualizado
-- [ ] Recibo imprimivel
 
 ### Fase 4 ✅
 - [x] Estoque com historico completo
 - [x] Alertas visuais de estoque baixo
 - [x] Cancelamento de venda restaura estoque
-- [ ] Devolucao parcial funcional
 
 ### Fase 5 ✅
 - [x] Dashboards com graficos Chart.js
-- [ ] Relatorios exportaveis em PDF/CSV
 - [x] Metricas em tempo real
-
-### Fase 6 🔶
-- [ ] Controle de caixa funcional
-- [ ] Orcamentos com conversao em venda
-- [ ] Fiado com controle de pagamentos
-- [ ] Multiplas formas de pagamento na venda
 
 ### Fase 7 ✅
 - [x] Deploy funcionando na Vercel
 - [x] Repositorio publico no GitHub
 - [x] Documentacao completa
 - [x] QA realizado
+
+### Fase 8 (Pos-MVP)
+- [ ] Atalhos de teclado funcionando (F2, F4, F8, F12)
+- [ ] Suporte a leitor de codigo de barras
+- [ ] Aplicacao de desconto
+- [ ] Recibo imprimivel
+- [ ] Devolucao parcial funcional
+- [ ] Relatorios exportaveis em PDF/CSV
+- [ ] Controle de caixa funcional
+- [ ] Orcamentos com conversao em venda
+- [ ] Fiado com controle de pagamentos
+- [ ] Multiplas formas de pagamento na venda
+- [ ] Desconto por quantidade
+- [ ] Importacao de produtos (CSV)

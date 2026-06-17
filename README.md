@@ -107,15 +107,17 @@ constru-pdv/
 
 Ver [docs/PLANO.md](docs/PLANO.md) para o plano completo de desenvolvimento.
 
+### Pos-MVP (apos aprovacao do cliente)
+
+- Atalhos de teclado, leitor de codigo de barras, desconto, recibo
+- Devolucao parcial, exportacao PDF/CSV
+- Controle de caixa, orcamentos, fiado/crediario
+- Multiplas formas de pagamento, importacao CSV
+
 | Fase | Foco | Status |
 |------|------|--------|
-| 1 | Fundacao (estrutura, DB, auth, layout) | Concluido |
-| 2 | Cadastros Basicos | Concluido |
-| 3 | PDV (venda rapida) | Parcial |
-| 4 | Estoque e Vendas | Concluido |
-| 5 | Dashboard e Relatorios | Concluido |
-| 6 | Features Avancadas | Parcial |
-| 7 | Polimento e Deploy | Concluido |
+| 1-7 | MVP (versao 1.0) | Concluido |
+| 8 | Pos-MVP (apos aprovacao do cliente) | Pendente |
 
 ## Licenca
 

@@ -15,3 +15,5 @@ Thumbs.db
 .playwright-mcp/
 *.png
 test_mov.php
+
+.vercel

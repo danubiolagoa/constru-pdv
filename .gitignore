@@ -12,3 +12,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.code-workspace
+.playwright-mcp/
+*.png
+test_mov.php

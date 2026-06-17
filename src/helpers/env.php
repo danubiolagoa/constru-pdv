@@ -30,7 +30,7 @@ function loadEnv(string $path): void
 
 function env(string $key, mixed $default = null): mixed
 {
-    $value = $_ENV[$key] ?? $_SERVER[$key] ?? null;
+    $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key) ?: null;
 
     if ($value === null) {
         return $default;

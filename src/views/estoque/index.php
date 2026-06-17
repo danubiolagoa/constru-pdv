@@ -86,7 +86,7 @@
                             $estoqueAtual = (float)$produto['estoque_atual'];
                             $estoqueMinimo = (float)$produto['estoque_minimo'];
                             $ratio = $estoqueMinimo > 0 ? $estoqueAtual / $estoqueMinimo : 999;
-                            $statusClass = $ratio <= 1 ? 'Critico' : ($ratio <= 1.5 ? 'Baixo' : 'Normal');
+                            $statusText = $ratio <= 1 ? 'Critico' : ($ratio <= 1.5 ? 'Baixo' : 'Normal');
                             $statusTag = $ratio <= 1 ? 'bg-red-100 text-red-800' : ($ratio <= 1.5 ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800');
                         ?>
                         <tr class="hover:bg-gray-50 <?= $ratio <= 1 ? 'bg-red-50' : '' ?>">

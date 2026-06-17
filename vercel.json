@@ -5,7 +5,15 @@
             "use": "vercel-php@0.7.3"
         },
         {
-            "src": "public/**/*",
+            "src": "public/css/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/js/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/img/*",
             "use": "@vercel/static"
         }
     ],

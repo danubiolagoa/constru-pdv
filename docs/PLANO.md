@@ -78,7 +78,7 @@ Progresso
 ● [x] CRUD de Produtos (com busca e filtros)
 ● [x] CRUD de Clientes (CPF/CNPJ, contato, total compras)
 ● [x] CRUD de Usuarios (admin e vendedor)
-● [ ] CRUD de Categorias de produtos
+● [x] Categorias via seed (usadas em produtos)
 ● [x] Sistema de busca e filtros
 ```
 
@@ -207,6 +207,7 @@ Progresso
 ● [ ] Fiado/Crediario proprio
 ● [ ] Multiplas formas de pagamento
 ● [ ] Desconto por quantidade
+● [ ] CRUD de Categorias de produtos
 ● [ ] Importacao de produtos (CSV)
 ```
 
@@ -425,4 +426,5 @@ configuracoes (
 - [ ] Fiado com controle de pagamentos
 - [ ] Multiplas formas de pagamento na venda
 - [ ] Desconto por quantidade
+- [ ] CRUD de Categorias
 - [ ] Importacao de produtos (CSV)

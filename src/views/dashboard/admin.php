@@ -56,6 +56,17 @@
 
     <div class="card">
         <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="pie-chart" class="w-5 h-5 text-accent"></i>
+            Formas de Pagamento
+        </h3>
+        <canvas id="pagamentoChart" height="200" class="mx-auto max-w-[220px]"></canvas>
+        <div id="pagamentoLegenda" class="mt-4 space-y-2 text-sm"></div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    <div class="card">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
             <i data-lucide="alert-triangle" class="w-5 h-5 text-warning"></i>
             Estoque Baixo
         </h3>
@@ -77,6 +88,46 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+    </div>
+
+    <div class="card">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-info"></i>
+            Top Produtos
+        </h3>
+        <canvas id="topProdutosChart" height="180"></canvas>
+    </div>
+
+    <div class="card">
+        <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="activity" class="w-5 h-5 text-success"></i>
+            Metas do Dia
+        </h3>
+        <div class="space-y-4">
+            <div>
+                <div class="flex justify-between text-sm mb-1">
+                    <span class="text-gray-600">Meta de Vendas</span>
+                    <span class="font-semibold">
+                        <?= format_money($vendasHoje['valor'] ?? 0) ?> / R$ 1.000,00
+                    </span>
+                </div>
+                <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: <?= min(100, (($vendasHoje['valor'] ?? 0) / 1000) * 100) ?>%"></div>
+                </div>
+                <p class="text-xs text-gray-400 mt-1"><?= round(min(100, (($vendasHoje['valor'] ?? 0) / 1000) * 100)) ?>% concluido</p>
+            </div>
+            <div>
+                <div class="flex justify-between text-sm mb-1">
+                    <span class="text-gray-600">Ticket Medio</span>
+                    <span class="font-semibold">
+                        R$ <?= number_format($vendasMes['total'] > 0 ? ($vendasMes['valor'] / $vendasMes['total']) : 0, 2, ',', '.') ?>
+                    </span>
+                </div>
+                <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div class="bg-accent h-3 rounded-full transition-all duration-500" style="width: <?= min(100, ($vendasMes['total'] > 0 ? ($vendasMes['valor'] / $vendasMes['total']) : 0) / 100 * 100) ?>%"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -108,40 +159,132 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('vendasChart');
-    if (ctx && typeof Chart !== 'undefined') {
+    const vendasCtx = document.getElementById('vendasChart');
+    if (vendasCtx && typeof Chart !== 'undefined') {
         const vendasData = <?= json_encode($vendasSemana) ?>;
         const labels = vendasData.map(v => {
-            const d = new Date(v.data);
+            const d = new Date(v.data + 'T12:00:00');
             return d.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit' });
         });
         const values = vendasData.map(v => parseFloat(v.valor));
+        const counts = vendasData.map(v => v.total);
 
-        new Chart(ctx, {
-            type: 'line',
+        new Chart(vendasCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Vendas (R$)',
+                        data: values,
+                        backgroundColor: 'rgba(45, 95, 74, 0.7)',
+                        borderColor: '#2D5F4A',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        yAxisID: 'y',
+                    },
+                    {
+                        label: 'Qtd Vendas',
+                        data: counts,
+                        backgroundColor: 'rgba(212, 136, 58, 0.6)',
+                        borderColor: '#D4883A',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        yAxisID: 'y1',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                interaction: { mode: 'index', intersect: false },
+                plugins: { legend: { position: 'top', labels: { usePointStyle: true, padding: 16 } } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        position: 'left',
+                        ticks: { callback: v => 'R$ ' + v.toLocaleString('pt-BR') }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        ticks: { callback: v => v + ' vendas' }
+                    }
+                }
+            }
+        });
+    }
+
+    const pagCtx = document.getElementById('pagamentoChart');
+    if (pagCtx && typeof Chart !== 'undefined') {
+        const pagData = <?= json_encode($pagamentos ?? []) ?>;
+        const colors = ['#2D5F4A', '#D4883A', '#1971C2', '#C92A2A', '#2B8A3E'];
+        const labels = pagData.map(v => v.forma_pagamento);
+        const values = pagData.map(v => parseFloat(v.valor));
+
+        new Chart(pagCtx, {
+            type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Vendas (R$)',
                     data: values,
-                    borderColor: '#2D5F4A',
-                    backgroundColor: 'rgba(45, 95, 74, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#2D5F4A',
-                    pointRadius: 4,
+                    backgroundColor: colors.slice(0, labels.length),
+                    borderWidth: 2,
+                    borderColor: '#fff',
                 }]
             },
             options: {
                 responsive: true,
+                cutout: '65%',
+                plugins: {
+                    legend: { display: false },
+                }
+            }
+        });
+
+        const legenda = document.getElementById('pagamentoLegenda');
+        if (legenda) {
+            const total = values.reduce((a, b) => a + b, 0);
+            pagData.forEach((v, i) => {
+                const pct = total > 0 ? ((v.valor / total) * 100).toFixed(1) : 0;
+                legenda.innerHTML += `
+                    <div class="flex items-center justify-between px-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full" style="background:${colors[i]}"></span>
+                            <span class="text-gray-600 capitalize">${v.forma_pagamento.replace('_', ' ')}</span>
+                        </div>
+                        <span class="font-medium">${pct}%</span>
+                    </div>`;
+            });
+        }
+    }
+
+    const topCtx = document.getElementById('topProdutosChart');
+    if (topCtx && typeof Chart !== 'undefined') {
+        const topData = <?= json_encode($topProdutos) ?>;
+        const topLabels = topData.map(v => v.nome.length > 15 ? v.nome.substring(0, 15) + '...' : v.nome);
+        const topValues = topData.map(v => parseFloat(v.total_valor));
+
+        new Chart(topCtx, {
+            type: 'bar',
+            data: {
+                labels: topLabels,
+                datasets: [{
+                    label: 'Valor (R$)',
+                    data: topValues,
+                    backgroundColor: 'rgba(45, 95, 74, 0.6)',
+                    borderColor: '#2D5F4A',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
                 plugins: { legend: { display: false } },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: v => 'R$ ' + v.toLocaleString('pt-BR')
-                        }
-                    }
+                    x: { beginAtZero: true, ticks: { callback: v => 'R$ ' + v.toLocaleString('pt-BR') } },
+                    y: { ticks: { font: { size: 11 } } }
                 }
             }
         });

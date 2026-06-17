@@ -70,6 +70,12 @@ class DashboardController
              ORDER BY data"
         );
 
+        $pagamentos = Database::fetchAll(
+            "SELECT forma_pagamento, COUNT(*) as total, SUM(total) as valor
+             FROM vendas WHERE status = 'concluida'
+             GROUP BY forma_pagamento ORDER BY total DESC"
+        );
+
         $content = render('dashboard/admin', [
             'user' => $user,
             'vendasHoje' => $vendasHoje,
@@ -79,6 +85,7 @@ class DashboardController
             'estoqueBaixo' => $estoqueBaixo,
             'topProdutos' => $topProdutos,
             'vendasSemana' => $vendasSemana,
+            'pagamentos' => $pagamentos,
         ]);
 
         layout('app', $content, [

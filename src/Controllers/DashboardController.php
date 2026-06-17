@@ -76,6 +76,11 @@ class DashboardController
              GROUP BY forma_pagamento ORDER BY total DESC"
         );
 
+        $metaVenda = Database::fetch(
+            "SELECT valor FROM configuracoes WHERE chave = 'meta_venda_diaria'"
+        );
+        $metaVendaValor = (float) ($metaVenda['valor'] ?? 1000);
+
         $content = render('dashboard/admin', [
             'user' => $user,
             'vendasHoje' => $vendasHoje,
@@ -86,6 +91,7 @@ class DashboardController
             'topProdutos' => $topProdutos,
             'vendasSemana' => $vendasSemana,
             'pagamentos' => $pagamentos,
+            'metaVendaValor' => $metaVendaValor,
         ]);
 
         layout('app', $content, [

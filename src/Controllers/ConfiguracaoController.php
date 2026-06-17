@@ -28,6 +28,7 @@ class ConfiguracaoController
         $campos = [
             'loja_nome', 'loja_cnpj', 'loja_telefone', 'loja_email',
             'loja_endereco', 'loja_cidade', 'loja_estado', 'loja_cep',
+            'meta_venda_diaria',
         ];
 
         foreach ($campos as $campo) {

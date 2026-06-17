@@ -108,13 +108,13 @@
                 <div class="flex justify-between text-sm mb-1">
                     <span class="text-gray-600">Meta de Vendas</span>
                     <span class="font-semibold">
-                        <?= format_money($vendasHoje['valor'] ?? 0) ?> / R$ 1.000,00
+                        <?= format_money($vendasHoje['valor'] ?? 0) ?> / <?= format_money($metaVendaValor ?? 1000) ?>
                     </span>
                 </div>
                 <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-                    <div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: <?= min(100, (($vendasHoje['valor'] ?? 0) / 1000) * 100) ?>%"></div>
+                    <div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: <?= min(100, (($vendasHoje['valor'] ?? 0) / ($metaVendaValor ?: 1)) * 100) ?>%"></div>
                 </div>
-                <p class="text-xs text-gray-400 mt-1"><?= round(min(100, (($vendasHoje['valor'] ?? 0) / 1000) * 100)) ?>% concluido</p>
+                <p class="text-xs text-gray-400 mt-1"><?= round(min(100, (($vendasHoje['valor'] ?? 0) / ($metaVendaValor ?: 1)) * 100)) ?>% concluido</p>
             </div>
             <div>
                 <div class="flex justify-between text-sm mb-1">
